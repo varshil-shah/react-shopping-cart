@@ -21,7 +21,7 @@ const Container = styled.div`
   }
 `;
 
-const Products = () => {
+const Products = (props) => {
   const cartContext = useContext(CartContext);
 
   let content = <Label>Loading products...</Label>;
@@ -43,6 +43,7 @@ const Products = () => {
         smallImageUrl={product.smallImage}
         title={product.title}
         price={product.price}
+        showToast={props.showToast}
       />
     ));
 

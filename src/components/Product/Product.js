@@ -59,6 +59,7 @@ const Product = (props) => {
       smallImageUrl: props.smallImageUrl,
       price: +props.price,
     });
+    props.showToast(`${props.title} added to cart!`);
   };
 
   const removeFromCartHandler = (e) => {

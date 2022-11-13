@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import CartProvider from "./context/CartProvider";
 import Cart from "./components/Cart/Cart";
@@ -24,12 +26,43 @@ const Grid = styled.div`
   }
 `;
 
+const Text = styled.p`
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #333;
+`;
+
 const App = () => {
+  const displayToast = (message) => {
+    toast(<Text>{message}</Text>, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: false,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   return (
     <CartProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Wrapper>
         <Grid>
-          <Products />
+          <Products showToast={displayToast} />
           <Cart />
         </Grid>
       </Wrapper>

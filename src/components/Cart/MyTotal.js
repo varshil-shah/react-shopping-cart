@@ -20,9 +20,17 @@ const Bold = styled.span`
   color: #333;
 `;
 
-const MyTotal = () => {
+const MyTotal = (props) => {
   const cartContext = useContext(CartContext);
   const totalAmount = cartContext.totalAmount.toFixed(2, "0");
+
+  const payTotalAmount = (e) => {
+    e.preventDefault();
+    cartContext.payAmount();
+    if (cartContext.totalAmount > 0) {
+      props.showToast("Your product will be delivered soon!");
+    }
+  };
 
   return (
     <Card>
@@ -30,7 +38,7 @@ const MyTotal = () => {
       <Paragraph>
         Your total amount is <Bold>${`${totalAmount}`}</Bold>
       </Paragraph>
-      <Button>Pay here</Button>
+      <Button onClick={payTotalAmount}>Pay here</Button>
     </Card>
   );
 };

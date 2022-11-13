@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect, useState, useCallback } from "react";
 
 import CartContext from "./cartContext";
-import { ADD, REMOVE, DELETE } from "./cart.types";
+import { ADD, REMOVE, DELETE, PAY } from "./cart.types";
 
 const defaultValues = {
   products: [],
@@ -10,6 +10,7 @@ const defaultValues = {
   cart: [],
   totalAmount: 0,
   addProduct: (item) => {},
+  payAmount: () => {},
   removeProduct: (id) => {},
   deleteProduct: (id) => {},
 };
@@ -87,6 +88,16 @@ const cartReducer = (state, action) => {
       cart: updatedCartProducts,
     };
   }
+
+  // When user pays amount, clear the cart
+  if (action.type === PAY) {
+    if (state.totalAmount <= 0) return { ...state };
+
+    return {
+      cart: [],
+      totalAmount: 0,
+    };
+  }
 };
 
 const CartProvider = (props) => {
@@ -144,6 +155,12 @@ const CartProvider = (props) => {
     });
   };
 
+  const payProductAmount = () => {
+    dispatchCartActions({
+      type: PAY,
+    });
+  };
+
   const cartContext = {
     products,
     isLoading,
@@ -151,6 +168,7 @@ const CartProvider = (props) => {
     cart: cartState.cart,
     totalAmount: cartState.totalAmount,
     addProduct: addProductToCartHandler,
+    payAmount: payProductAmount,
     removeProduct: removeProductFromCartHandler,
     deleteProduct: deleteProductFromCartHandler,
   };

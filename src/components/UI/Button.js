@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
+  margin: ${(props) => props.margin};
   display: flex;
   justify-content: center;
   align-items: center;

@@ -3,11 +3,11 @@ import React from "react";
 import MyCart from "./MyCart";
 import MyTotal from "./MyTotal";
 
-const Cart = () => {
+const Cart = (props) => {
   return (
     <div>
       <MyCart />
-      <MyTotal />
+      <MyTotal showToast={props.showToast} />
     </div>
   );
 };

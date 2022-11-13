@@ -63,7 +63,7 @@ const App = () => {
       <Wrapper>
         <Grid>
           <Products showToast={displayToast} />
-          <Cart />
+          <Cart showToast={displayToast} />
         </Grid>
       </Wrapper>
     </CartProvider>

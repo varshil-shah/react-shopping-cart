@@ -34,7 +34,7 @@ const MyTotal = (props) => {
 
   return (
     <Card>
-      <Heading>Grand Total</Heading>
+      <Heading margin="1rem">Grand Total</Heading>
       <Paragraph>
         Your total amount is <Bold>${`${totalAmount}`}</Bold>
       </Paragraph>

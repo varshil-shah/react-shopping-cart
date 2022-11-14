@@ -10,6 +10,7 @@ import Products from "./components/Product/Products";
 const Wrapper = styled.div`
   max-width: 140rem;
   margin: 2rem auto;
+  z-index: 10;
 `;
 
 const Grid = styled.div`

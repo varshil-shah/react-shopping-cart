@@ -36,7 +36,7 @@ const MyCart = () => {
 
   return (
     <Card>
-      <Heading>Your cart</Heading>
+      <Heading margin="1rem">Your cart</Heading>
       <Wrapper>{content}</Wrapper>
     </Card>
   );

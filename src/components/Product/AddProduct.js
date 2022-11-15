@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import { v4 } from "uuid";
 
+import CartContext from "../../context/cartContext";
 import { ImCross } from "react-icons/im";
 import Heading from "../UI/Heading";
 import Input from "../UI/InputField";
@@ -62,6 +63,8 @@ const Form = styled.form`
 `;
 
 const AddProduct = (props) => {
+  const cartContext = useContext(CartContext);
+
   const companyNameRef = useRef();
   const priceRef = useRef();
   const imageUrlRef = useRef();
@@ -97,6 +100,8 @@ const AddProduct = (props) => {
 
     // Hide modal
     props.hideModal();
+
+    cartContext.newProduct(newProduct);
   };
 
   return (
